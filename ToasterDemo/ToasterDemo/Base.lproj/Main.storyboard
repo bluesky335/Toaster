@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="ToasterDemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kYm-xn-EO1">
+                                <rect key="frame" x="35.333333333333329" y="313.66666666666669" width="146.33333333333337" height="34.333333333333314"/>
+                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system" title="show default" cornerStyle="medium">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HL1-1H-bLr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYi-uC-zne">
+                                <rect key="frame" x="211.66666666666663" y="313.66666666666669" width="119" height="34.333333333333314"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="trash" catalog="system" title="cancel all" cornerStyle="medium">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="hideToast:" destination="BYZ-38-t0r" eventType="touchUpInside" id="kWB-GZ-pLw"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="ToastText" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="a2B-l6-nHU">
+                                <rect key="frame" x="20" y="249.66666666666663" width="353" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eph-Gx-5LE">
+                                <rect key="frame" x="26" y="356" width="155.66666666666666" height="34.333333333333314"/>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system" title="show success" cornerStyle="medium">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showToastSuccess:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8ak-1U-7Ft"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gx8-4E-gez">
+                                <rect key="frame" x="27.666666666666671" y="398.33333333333331" width="154" height="34.333333333333314"/>
+                                <color key="backgroundColor" systemColor="systemYellowColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system" title="show warning" cornerStyle="medium">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showToastWarning:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YNG-dW-Pq9"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MXd-hw-Ohb">
+                                <rect key="frame" x="51" y="440.66666666666669" width="130.66666666666666" height="34.333333333333314"/>
+                                <color key="backgroundColor" systemColor="systemPinkColor"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" image="bell" catalog="system" title="show error" cornerStyle="medium">
+                                    <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </buttonConfiguration>
+                                <connections>
+                                    <action selector="showToastError:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ytN-J0-cwt"/>
+                                </connections>
+                            </button>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="0uU-xR-eAt">
+                                <rect key="frame" x="16" y="68.999999999999986" width="361" height="164.66666666666663"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLW-Wr-TGk">
+                                        <rect key="frame" x="0.0" y="0.0" width="361" height="20.333333333333332"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="U3F-DH-9kO">
+                                        <rect key="frame" x="0.0" y="30.333333333333329" width="361" height="32"/>
+                                        <segments>
+                                            <segment title="bottom"/>
+                                            <segment title="center"/>
+                                            <segment title="top"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="placeSettingChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="YYy-vr-p8a"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="layout" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJi-Dn-rTJ">
+                                        <rect key="frame" x="0.0" y="71.333333333333343" width="361" height="20.333333333333329"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="d4o-2L-0bk">
+                                        <rect key="frame" x="0.0" y="101.66666666666666" width="361" height="32"/>
+                                        <segments>
+                                            <segment title="default"/>
+                                            <segment title="replace"/>
+                                            <segment title="stacke"/>
+                                        </segments>
+                                        <connections>
+                                            <action selector="layoutSettingChange:" destination="BYZ-38-t0r" eventType="valueChanged" id="o4j-4w-zA1"/>
+                                        </connections>
+                                    </segmentedControl>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eeh-dq-Pqf">
+                                        <rect key="frame" x="0.0" y="142.66666666666666" width="361" height="22"/>
+                                        <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                        <state key="normal" title="fixed width" image="circle" catalog="system">
+                                            <color key="titleColor" systemColor="labelColor"/>
+                                        </state>
+                                        <state key="selected" image="checkmark.circle.fill" catalog="system"/>
+                                        <connections>
+                                            <action selector="fixedWidth:" destination="BYZ-38-t0r" eventType="touchUpInside" id="c5V-1v-LVr"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="uYi-uC-zne" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="centerX" constant="15" id="4RY-Lv-ea7"/>
+                            <constraint firstItem="0uU-xR-eAt" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="9zs-QD-6Oc"/>
+                            <constraint firstItem="gx8-4E-gez" firstAttribute="trailing" secondItem="Eph-Gx-5LE" secondAttribute="trailing" id="Auh-Fm-P0J"/>
+                            <constraint firstItem="kYm-xn-EO1" firstAttribute="top" secondItem="a2B-l6-nHU" secondAttribute="bottom" constant="30" id="ELN-vH-ZJj"/>
+                            <constraint firstItem="Eph-Gx-5LE" firstAttribute="trailing" secondItem="kYm-xn-EO1" secondAttribute="trailing" id="LoM-Zl-AEB"/>
+                            <constraint firstItem="a2B-l6-nHU" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="MQD-Pi-Nmd"/>
+                            <constraint firstItem="MXd-hw-Ohb" firstAttribute="top" secondItem="gx8-4E-gez" secondAttribute="bottom" constant="8" symbolic="YES" id="OFl-if-FhU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="a2B-l6-nHU" secondAttribute="trailing" constant="20" id="T4H-Vm-Npm"/>
+                            <constraint firstItem="MXd-hw-Ohb" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="ZtX-hI-OZo"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0uU-xR-eAt" secondAttribute="trailing" constant="16" id="bIu-Xj-qud"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="uYi-uC-zne" secondAttribute="trailing" constant="16" id="bKO-fc-rnc"/>
+                            <constraint firstItem="Eph-Gx-5LE" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hkO-MC-WJz"/>
+                            <constraint firstItem="gx8-4E-gez" firstAttribute="top" secondItem="Eph-Gx-5LE" secondAttribute="bottom" constant="8" symbolic="YES" id="hxY-tU-H6L"/>
+                            <constraint firstItem="MXd-hw-Ohb" firstAttribute="trailing" secondItem="gx8-4E-gez" secondAttribute="trailing" id="lvA-NU-QQW"/>
+                            <constraint firstItem="Eph-Gx-5LE" firstAttribute="top" secondItem="kYm-xn-EO1" secondAttribute="bottom" constant="8" symbolic="YES" id="pO0-Vj-Xq9"/>
+                            <constraint firstItem="0uU-xR-eAt" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="qgj-5P-mcf"/>
+                            <constraint firstItem="a2B-l6-nHU" firstAttribute="top" secondItem="0uU-xR-eAt" secondAttribute="bottom" constant="16" id="rH5-gU-2rk"/>
+                            <constraint firstItem="kYm-xn-EO1" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="wZA-Ge-Vcv"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="centerX" secondItem="kYm-xn-EO1" secondAttribute="trailing" constant="15" id="xhy-1e-Iv9"/>
+                            <constraint firstItem="uYi-uC-zne" firstAttribute="top" secondItem="a2B-l6-nHU" secondAttribute="bottom" constant="30" id="z9r-0I-PWU"/>
+                            <constraint firstItem="gx8-4E-gez" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="zgN-kR-cjQ"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="layoutSegment" destination="d4o-2L-0bk" id="zl0-Nw-IT9"/>
+                        <outlet property="textField" destination="a2B-l6-nHU" id="gB5-jN-L5U"/>
+                        <outlet property="topSegment" destination="U3F-DH-9kO" id="xbH-HW-gCE"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-532.06106870229007" y="-108.45070422535211"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="bell" catalog="system" width="125" height="128"/>
+        <image name="checkmark.circle.fill" catalog="system" width="128" height="123"/>
+        <image name="circle" catalog="system" width="128" height="123"/>
+        <image name="trash" catalog="system" width="117" height="128"/>
+        <systemColor name="labelColor">
+            <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemPinkColor">
+            <color red="1" green="0.17647058823529413" blue="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemYellowColor">
+            <color red="1" green="0.80000000000000004" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
