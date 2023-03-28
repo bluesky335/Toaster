@@ -102,4 +102,7 @@ you can also customize the toast animation by implement your own ToastAnimatterT
 ### multiple scene support
 
 `ToastCenter.default` display the toast view in the first UIWindowScene connected to the app.
-you can creat ToastCenter for diffrent window scenes by `ToastCenter(windowScene: scene)`.
+
+you can create ToastCenter for diffrent window scenes by `ToastCenter(windowScene: scene)`.
+
+then using `Toast(text:"toast text").show(in: center)` to show toast.
