@@ -68,6 +68,7 @@ public class ToastCenter {
     @available(iOS 13.0, *)
     public init(windowScene: UIWindowScene) {
         window = ToastWindow(windowScene: windowScene)
+        setup()
     }
 
     public func register<Toast: ToastType>(toastType: Toast.Type, with viewProvider: ToastViewProviderType<Toast>) {
