@@ -14,15 +14,24 @@ class ViewController: UIViewController {
     @IBOutlet var topSegment: UISegmentedControl!
     @IBOutlet var layoutSegment: UISegmentedControl!
     var tasks: [any ToastTaskType] = []
+    
+    lazy var center = ToastCenter.default
 
     override func viewDidLoad() {
         super.viewDidLoad()
         ToastView.appearance().backgroundColor = .blue
-        ToastCenter.default.toastAnimator = ToastAnimatter(position: .bottom)
+        center.toastAnimator = ToastAnimatter(position: .bottom)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if let scene = self.view.window?.windowScene {
+            center = ToastCenter(windowScene: scene)
+        }
     }
 
     @IBAction func placeSettingChange(_ sender: UISegmentedControl) {
-        guard let animator = ToastCenter.default.toastAnimator as? ToastAnimatter else {
+        guard let animator = center.toastAnimator as? ToastAnimatter else {
             return
         }
         var place: ToastAnimatter.Position = .bottom
@@ -33,12 +42,12 @@ class ViewController: UIViewController {
         default:
             place = .bottom
         }
-        ToastCenter.default.cancellAllToast()
-        ToastCenter.default.toastAnimator = ToastAnimatter(position: place, layout: animator.layout, fixedWidth: animator.fixedWidth)
+        center.cancellAllToast()
+        center.toastAnimator = ToastAnimatter(position: place, layout: animator.layout, fixedWidth: animator.fixedWidth)
     }
 
     @IBAction func layoutSettingChange(_ sender: UISegmentedControl) {
-        guard let animator = ToastCenter.default.toastAnimator as? ToastAnimatter else {
+        guard let animator = center.toastAnimator as? ToastAnimatter else {
             return
         }
         var layout: ToastAnimatter.Layout = .replace
@@ -49,12 +58,12 @@ class ViewController: UIViewController {
         default:
             layout = .replace
         }
-        ToastCenter.default.cancellAllToast()
-        ToastCenter.default.toastAnimator = ToastAnimatter(position: animator.position, layout: layout, fixedWidth: animator.fixedWidth)
+        center.cancellAllToast()
+        center.toastAnimator = ToastAnimatter(position: animator.position, layout: layout, fixedWidth: animator.fixedWidth)
     }
 
     @IBAction func fixedWidth(_ sender: UIButton) {
-        guard let animator = ToastCenter.default.toastAnimator as? ToastAnimatter else {
+        guard let animator = center.toastAnimator as? ToastAnimatter else {
             return
         }
         sender.isSelected.toggle()
@@ -62,25 +71,25 @@ class ViewController: UIViewController {
     }
 
     @IBAction func showToast(_ sender: Any) {
-        if let task = Toast(text: textField.text ?? "xxx").show() {
+        if let task = Toast(text: textField.text ?? "xxx").show(in: center) {
             tasks.append(task)
         }
     }
 
     @IBAction func showToastSuccess(_ sender: Any) {
-        if let task = Toast(text: textField.text ?? "xxx").success().show() {
+        if let task = Toast(text: textField.text ?? "xxx").success().show(in: center) {
             tasks.append(task)
         }
     }
 
     @IBAction func showToastError(_ sender: Any) {
-        if let task = Toast(text: textField.text ?? "xxx").error().show() {
+        if let task = Toast(text: textField.text ?? "xxx").error().show(in: center) {
             tasks.append(task)
         }
     }
 
     @IBAction func showToastWarning(_ sender: Any) {
-        if let task = Toast(text: textField.text ?? "xxx").warning().show() {
+        if let task = Toast(text: textField.text ?? "xxx").warning().show(in: center) {
             tasks.append(task)
         }
     }
