@@ -32,7 +32,7 @@ public protocol ToastType {
 }
 
 public extension ToastType {
-    @MainActor func show(in toastCenter: ToastCenter = .default) -> ToastTask<Self>? {
+    @MainActor @discardableResult func show(in toastCenter: ToastCenter = .default) -> ToastTask<Self>? {
         return toastCenter.show(toast: self)
     }
 }
