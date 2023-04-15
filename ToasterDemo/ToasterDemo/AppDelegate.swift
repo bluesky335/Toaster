@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Toaster
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -13,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        ToastCenter.default.toastAnimator = ToastAnimatter(position: .top,layout: .stacke,fixedWidth: true)
         // Override point for customization after application launch.
         return true
     }

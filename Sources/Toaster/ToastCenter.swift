@@ -5,8 +5,8 @@
 //  Created by BlueSky335 on 2023/3/14.
 //
 
-import UIKit
 import KeyboardObserver
+import UIKit
 
 public protocol ToastTaskType: Hashable {
     var toastView: UIView { get }
@@ -35,11 +35,23 @@ public class ToastTask<T: ToastType>: NSObject, ToastTaskType {
     }
 }
 
-
 public class ToastCenter {
     public static var `default` = ToastCenter()
     private var toastBag: [Int: any ToastTaskType] = [:]
-    public let window: ToastWindow
+    public private(set) lazy var window: ToastWindow = {
+        let win: ToastWindow
+        if #available(iOS 13.0, *) {
+            if let scene = UIApplication.shared.connectedScenes.first(where: { $0 is UIWindowScene }) as? UIWindowScene {
+                win = ToastWindow(windowScene: scene)
+            } else {
+                win = ToastWindow()
+            }
+        } else {
+            win = ToastWindow()
+        }
+        setup(window: win)
+        return win
+    }()
 
     public var toastAnimator: ToastAnimatterType = ToastAnimatter()
 
@@ -53,22 +65,16 @@ public class ToastCenter {
     private var keyboardBottom: NSLayoutConstraint?
 
     public init() {
-        if #available(iOS 13.0, *) {
-            if let scene = UIApplication.shared.connectedScenes.first(where: { $0 is UIWindowScene }) as? UIWindowScene {
-                window = ToastWindow(windowScene: scene)
-            } else {
-                window = ToastWindow()
-            }
-        } else {
-            window = ToastWindow()
-        }
-        setup()
+        // 注册一个默认的 ToastViewProvider
+        register(toastType: Toast.self, with: ToastViewProvider())
     }
 
     @available(iOS 13.0, *)
     public init(windowScene: UIWindowScene) {
         window = ToastWindow(windowScene: windowScene)
-        setup()
+        // 注册一个默认的 ToastViewProvider
+        register(toastType: Toast.self, with: ToastViewProvider())
+        setup(window: window)
     }
 
     public func register<Toast: ToastType>(toastType: Toast.Type, with viewProvider: ToastViewProviderType<Toast>) {
@@ -86,7 +92,7 @@ public class ToastCenter {
         return viewProviders[typeName] as? ToastViewProviderType<Toast>
     }
 
-    func setup() {
+    func setup(window: ToastWindow) {
         window.isHidden = false
         window.windowLevel = .init(rawValue: UIWindow.Level.statusBar.rawValue + 1)
         let vc = UIViewController()
@@ -98,22 +104,19 @@ public class ToastCenter {
         keyboardLeft?.isActive = true
         keyboardRight = keyboardLayoutGuide.rightAnchor.constraint(equalTo: window.rightAnchor, constant: 0)
         keyboardRight?.isActive = true
-        
+
         keyboardHeight = keyboardLayoutGuide.heightAnchor.constraint(equalToConstant: KeyboardObserver.share().keyboardEndFrame.height)
         keyboardHeight?.isActive = true
         keyboardBottom = keyboardLayoutGuide.bottomAnchor.constraint(equalTo: window.bottomAnchor, constant: 0)
         keyboardBottom?.isActive = true
-        // 注册一个默认的 ToastViewProvider
-        register(toastType: Toast.self, with: ToastViewProvider())
         NotificationCenter.default.addObserver(forName: UIApplication.keyboardWillShowNotification, object: nil, queue: .main) { notification in
             guard let frame = notification.userInfo?[UIApplication.keyboardFrameEndUserInfoKey] as? CGRect, let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? CGFloat else {
                 return
             }
             self.keyboardHeight?.constant = frame.height
             UIView.animate(withDuration: duration, delay: 0) {
-                self.window.layoutIfNeeded()
+                window.layoutIfNeeded()
             }
-            print(notification)
         }
 
         NotificationCenter.default.addObserver(forName: UIApplication.keyboardWillHideNotification, object: nil, queue: .main) { notification in
@@ -122,9 +125,8 @@ public class ToastCenter {
             }
             self.keyboardHeight?.constant = 0
             UIView.animate(withDuration: duration, delay: 0) {
-                self.window.layoutIfNeeded()
+                window.layoutIfNeeded()
             }
-            print(notification)
         }
     }
 
