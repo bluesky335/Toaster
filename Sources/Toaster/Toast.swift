@@ -13,12 +13,26 @@ public struct Toast: ToastType {
     public var attributedText: NSAttributedString?
 
     public struct Style {
-        public var backgroundColor: UIColor = .darkGray
-        public var font: UIFont = .systemFont(ofSize: 17)
-        public var textColor: UIColor = .white
-        public var cornerRadius: CGFloat = 10
+        public var backgroundColor: UIColor
+        public var font: UIFont
+        public var textColor: UIColor
+        public var cornerRadius: CGFloat
         public var efect: UIBlurEffect.Style?
-        public var inset: UIEdgeInsets = .init(top: 3, left: 10, bottom: 3, right: 10)
+        public var inset: UIEdgeInsets
+
+        public init(backgroundColor: UIColor = .darkGray,
+                    font: UIFont = .systemFont(ofSize: 17),
+                    textColor: UIColor = .white,
+                    cornerRadius: CGFloat = 10,
+                    efect: UIBlurEffect.Style? = nil,
+                    inset: UIEdgeInsets = .init(top: 3, left: 10, bottom: 3, right: 10)) {
+            self.backgroundColor = backgroundColor
+            self.font = font
+            self.textColor = textColor
+            self.cornerRadius = cornerRadius
+            self.efect = efect
+            self.inset = inset
+        }
     }
 
     public static var successStyle: Style = .init(backgroundColor: .systemGreen.withAlphaComponent(0.75), efect: .regular)
