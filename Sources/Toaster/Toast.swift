@@ -21,10 +21,10 @@ public struct Toast: ToastType {
         public var inset: UIEdgeInsets = .init(top: 3, left: 10, bottom: 3, right: 10)
     }
 
-    static var successStyle: Style = .init(backgroundColor: .systemGreen.withAlphaComponent(0.75), efect: .regular)
-    static var errorStyle: Style = .init(backgroundColor: .systemRed.withAlphaComponent(0.75), efect: .regular)
-    static var warningStyle: Style = .init(backgroundColor: .systemYellow.withAlphaComponent(0.75), textColor: .darkGray, efect: .regular)
-    static var defaultStyle: Style = .init(backgroundColor: .clear, efect: .dark)
+    public static var successStyle: Style = .init(backgroundColor: .systemGreen.withAlphaComponent(0.75), efect: .regular)
+    public static var errorStyle: Style = .init(backgroundColor: .systemRed.withAlphaComponent(0.75), efect: .regular)
+    public static var warningStyle: Style = .init(backgroundColor: .systemYellow.withAlphaComponent(0.75), textColor: .darkGray, efect: .regular)
+    public static var defaultStyle: Style = .init(backgroundColor: .clear, efect: .dark)
 
     public var style: Style
 
